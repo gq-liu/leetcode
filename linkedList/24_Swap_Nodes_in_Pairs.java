@@ -17,7 +17,8 @@ class Solution {
         head.next = curr;
         prev = head.next;
         curr = curr.next;
-        
+        // using while loop handle the similar steps 
+		// NOTE : last node is curr, using curr.next.next should promise curr != null curr.next != null 
         while (curr != null && curr.next != null) {
             prev.next = curr.next;
             curr.next = prev.next.next;
