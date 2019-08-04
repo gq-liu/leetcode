@@ -67,3 +67,36 @@ class Solution {
         return currNode;
     }
 }
+
+// Attempt 2 : Using Stack
+// 逆序可以简单解决的问题可以用stack
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        // Using Stack
+        Stack<Integer> stackL1 = buildStackFromList(l1);
+        Stack<Integer> stackL2 = buildStackFromList(l2);
+        
+        int upNum = 0;
+        ListNode head = new ListNode(-1);
+        while (!stackL1.empty() || !stackL2.empty() || upNum != 0) {
+            int x = stackL1.empty() ? 0:stackL1.pop();
+            int y = stackL2.empty() ? 0:stackL2.pop();
+            int sum = x + y + upNum;
+            ListNode node = new ListNode(sum % 10);
+            node.next = head.next;
+            head.next = node;
+            upNum = sum / 10;
+        }
+        return head.next;
+    
+    }
+    
+    private Stack<Integer> buildStackFromList(ListNode l) {
+        Stack<Integer> stack = new Stack<>();
+        while(l != null) {
+            stack.push(l.val);
+            l = l.next;
+        }
+        return stack;
+    }
+}
