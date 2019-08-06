@@ -23,8 +23,8 @@ class Solution {
         if (Math.abs(leftDepth - rightDepth) > 1) {
             isBalanced = false;
         }
-        // 不太清楚下面这句为什么不能正常运行
-		//isBalanced = Math.abs(leftDepth - rightDepth) <= 1 ? true:false;
+        // 下面错误的原因：不能把isBalanced 改回true
+		//isBalanced = Math.abs(leftDepth - rightDepth) <= 1 ? true:false; 
         return Math.max(leftDepth, rightDepth) + 1;
     }
 }
